@@ -21,7 +21,7 @@ const Sidebar = ({ user }: SidebarProps) => {
             alt="Dash Logo"
             className="size-[24px] max-xl:size-14"
           />
-          <h1 className="sidebar-logo">Dash Bank</h1>
+          <h1 className="sidebar-logo">&nbsp; Dash Bank</h1>
         </Link>
         {sidebarLinks.map((item) => {
           const isActive =
