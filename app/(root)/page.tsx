@@ -7,16 +7,18 @@ const Home = () => {
   return (
     <section className="home">
       <div className="home-content">
-        <HeaderBox
-          type="greeting"
-          title="Welcome"
-          user={loggedIn?.firstName || "Guest"}
-          subtext="Access and manage your account transactions efficiently."
-        />
+        <div className="home-header">
+          <HeaderBox
+            type="greeting"
+            title="Welcome"
+            user={loggedIn?.firstName || "Guest"}
+            subtext="Access and manage your account transactions efficiently."
+          />
+        </div>
         <TotalBalanceBox
           accounts={[]}
           totalBanks={1}
-          totalCurrentBalance={1250.35}
+          totalCurrentBalance={50.35}
         />
       </div>
     </section>
