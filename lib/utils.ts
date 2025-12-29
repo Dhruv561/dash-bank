@@ -195,7 +195,52 @@ export const getTransactionStatus = (date: Date) => {
   return date > twoDaysAgo ? "Processing" : "Success";
 };
 
-export const authFormSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters long"),
-});
+export const authFormSchema = (type: string) =>
+  z.object({
+    // sign up
+    firstName:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string("Enter first name")
+            .min(3, "First name must be at least 3 characters long"),
+    lastName:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string("Enter last name")
+            .min(3, "Last name must be at least 3 characters long"),
+    address:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string("Enter valid address")
+            .max(50, "Address must be at most 50 characters long"),
+    state:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string("Enter valid state")
+            .max(3, "State must be exactly 3 characters long")
+            .min(3, "State must be exactly 3 characters long"),
+    postalCode:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string("Enter valid postal code")
+            .min(4, "Postal Code must be exactly 4 characters long")
+            .max(4, "Postal Code must be exactly 4 characters long"),
+    dateOfBirth:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string("Enter valid date of birth")
+            .min(3, "Enter valid date of birth"),
+    taxFileNumber:
+      type === "sign-in"
+        ? z.string().optional()
+        : z.string("Enter valid TFN").min(3, "Enter valid TFN"),
+    // sign in and sign up
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(8, "Password must be at least 8 characters long"),
+  });
